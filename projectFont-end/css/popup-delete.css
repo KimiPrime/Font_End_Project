@@ -1,0 +1,56 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f3f4f6;
+    font-family: Arial, sans-serif;
+  }
+  .modal {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+  .modal-header {
+    display: flex;
+    align-items: center;
+    color: red;
+  }
+  .modal-header svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  .modal p {
+    color: #374151;
+    margin-top: 10px;
+  }
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  .btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .btn-cancel {
+    background: #e5e7eb;
+    color: #374151;
+    margin-right: 10px;
+  }
+  .btn-cancel:hover {
+    background: #d1d5db;
+  }
+  .btn-delete {
+    background: red;
+    color: white;
+  }
+  .btn-delete:hover {
+    background: darkred;
+  }

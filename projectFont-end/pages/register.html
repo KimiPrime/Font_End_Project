@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng kí</title>
+    <link rel="stylesheet" href="../css/register.css" />
+    <link rel="stylesheet" href="../css/rest.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Đăng ký tài khoản</h2>
+      <p>Đăng ký tài khoản để sử dụng dịch vụ</p>
+      <div class="name-container">
+        <div class="input-group">
+          <label for="hoTenDem">Họ và tên đệm</label>
+          <input type="text" id="hoTenDem" />
+        </div>
+        <div class="input-group">
+          <label for="ten">Tên</label>
+          <input type="text" id="ten" />
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" />
+      </div>
+      <div class="input-group">
+        <label for="matKhau">Mật khẩu</label>
+        <input type="password" id="matKhau" />
+      </div>
+      <div class="accept-container">
+        <label style="display: flex; align-items: center; white-space: nowrap">
+          <input type="checkbox" id="dongY" style="margin-right: 5px" />
+          <span style="font-size: 14px"
+            >Tôi đồng ý với
+            <a href="#" style="font-size: 14px"
+              >chính sách và điều khoản</a
+            ></span
+          >
+        </label>
+      </div>
+      <button id="btnDangKy" disabled>Đăng ký</button>
+      <p>Đã có tài khoản? <a href="../pages/log-in.html">Đăng nhập</a></p>
+    </div>
+    <script src="register.js"></script>
+  </body>
+</html>

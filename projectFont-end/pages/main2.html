@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý bài học</title>
+    <link rel="stylesheet" href="../css/main2.css" />
+    <link rel="stylesheet" href="../css/rest.css" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>Study Tracker</h2>
+      <ul>
+        <li><a href="#">Thống kê</a></li>
+        <li><a href="#">Quản lý môn học</a></li>
+        <li><a href="#" class="active">Quản lý bài học</a></li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="header">
+        <h2>Bài học</h2>
+        <div class="actions">
+          <select class="select">
+            <option>Lọc theo môn học</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="javascript">JavaScript</option>
+          </select>
+          <button class="add-btn">Thêm mới bài học</button>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <table>
+        <thead>
+          <tr>
+            <th><input type="checkbox" /></th>
+            <th>Tên bài học &#8595;</th>
+            <th>Thời gian học</th>
+            <th>Trạng thái</th>
+            <th>Chức năng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox" checked /></td>
+            <td>Session 01 - Tổng quan về HTML</td>
+            <td>45</td>
+            <td><span class="status completed"> Đã hoàn thành</span></td>
+            <td>
+              <button class="edit">
+                <img src="../assist/edit-2.png" alt="" />
+              </button>
+              <button class="delete">
+                <img src="../assist/trash-2.png" alt="" />
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>Session 02 - Thẻ Inline và Block</td>
+            <td>60</td>
+            <td><span class="status pending"> Chưa hoàn thành</span></td>
+            <td>
+              <button class="edit">
+                <img src="../assist/edit-2.png" alt="" />
+              </button>
+              <button class="delete">
+                <img src="../assist/trash-2.png" alt="" />
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" checked /></td>
+            <td>Session 03 - Form và Table</td>
+            <td>40</td>
+            <td><span class="status completed"> Đã hoàn thành</span></td>
+            <td>
+              <button class="edit">
+                <img src="../assist/edit-2.png" alt="" />
+              </button>
+              <button class="delete">
+                <img src="../assist/trash-2.png" alt="" />
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>Session 04 - CSS cơ bản</td>
+            <td>45</td>
+            <td><span class="status pending"> Chưa hoàn thành</span></td>
+            <td>
+              <button class="edit">
+                <img src="../assist/edit-2.png" alt="" />
+              </button>
+              <button class="delete">
+                <img src="../assist/trash-2.png" alt="" />
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button>«</button>
+        <button>1</button>
+        <button class="switch">2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>»</button>
+      </div>
+    </div>
+  </body>
+</html>
