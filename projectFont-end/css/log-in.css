@@ -1,109 +1,126 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7fc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  background-color: #f4f7fc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
+
 .login-container {
-    padding: 20px;
-    text-align: center;
-    width: 535px;
+  padding: 20px;
+  text-align: center;
+  width: 535px;
 }
+
 h1 {
-    margin-bottom: 10px;
-    font-size: 50px;
+  margin-bottom: 10px;
+  font-size: 50px;
 }
-p {
-    color: #666;
+#title{
+  text-align: left;
 }
- #title {
-        text-align: left;
-    }
+#description {
+  color: #666;
+}
 
 form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
+
 label {
-    text-align: left;
-    margin-top: 10px;
+  text-align: left;
+  margin-top: 10px;
 }
+
 input {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
+
 .options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-    margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 10px;
 }
+
+#terms {
+  display: none;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+
 button {
-    background: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 15px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
 }
+
 button:hover {
-    background: #0056b3;
+  background: #0056b3;
 }
+
 a {
-    color: #007bff;
-    text-decoration: none;
+  color: #007bff;
+  text-decoration: none;
 }
+
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
-@media screen and (max-width: 450px) {
-    .login-container {
-        width: 90%;
-        padding: 15px;
-    }
 
-    h1 {
-        font-size: 30px;
-        visibility: hidden; 
-        position: relative;
-    }
+#register-link {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
 
-    h1::after {
-        content: "Đăng nhập tài khoản"; 
-        visibility: visible;
-        position: absolute;
-        left: 0;
-        font-size: 30px;
-    }
+@media screen and (max-width: 400px) {
+  h1 {
+    text-align: center;
+    font-size: 30px;
+  }
 
-    p {
-        font-size: 14px;
-    }
+  #description {
+    text-align: center;
+    font-size: 14px;
+  }
 
-    input {
-        width: calc(100% - 10px);
-        padding: 8px;
-    }
+  .options {
+    display: none;
+  }
 
-    .options {
-        flex-direction: column;
-        align-items: flex-start;
-        font-size: 12px;
-    }
+  #terms {
+    display: block;
+  }
 
-    .options label {
-        margin-bottom: 5px;
-    }
+  #register-link {
+    display: none;
+  }
 
-    button {
-        padding: 10px;
-        font-size: 14px;
-    }
+  .login-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  input {
+    width: calc(100% - 10px);
+    padding: 8px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px;
+  }
 }

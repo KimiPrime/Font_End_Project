@@ -6,6 +6,7 @@
     <title>Đăng kí</title>
     <link rel="stylesheet" href="../css/register.css" />
     <link rel="stylesheet" href="../css/rest.css" />
+    <link rel="stylesheet" href="../css/basc.css" />
   </head>
   <body>
     <div class="container">
@@ -23,12 +24,17 @@
       </div>
       <div class="input-group">
         <label for="email">Email</label>
-        <input type="email" id="email" />
+        <input type="email" placeholder="Kebatdungthu@gmail.com" id="email" />
       </div>
       <div class="input-group">
         <label for="matKhau">Mật khẩu</label>
         <input type="password" id="matKhau" />
       </div>
+      <div class="input-group">
+        <label for="xacNhanMatKhau">Xác nhận mật khẩu</label>
+        <input type="password" id="xacNhanMatKhau" />
+      </div>
+
       <div class="accept-container">
         <label style="display: flex; align-items: center; white-space: nowrap">
           <input type="checkbox" id="dongY" style="margin-right: 5px" />
@@ -43,6 +49,6 @@
       <button id="btnDangKy" disabled>Đăng ký</button>
       <p>Đã có tài khoản? <a href="../pages/log-in.html">Đăng nhập</a></p>
     </div>
-    <script src="register.js"></script>
+    <script src="../js/register.js"></script>
   </body>
 </html>

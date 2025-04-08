@@ -1,121 +1,142 @@
-/* Reset mặc định */
 body {
-    font-family: Arial, sans-serif;
+    background-color: #fff;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-}
-
-/* Header */
-header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 15px 30px;
-    background: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.search-bar input {
-    padding: 8px;
-    width: 200px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-}
-
-/* Bộ lọc */
-.filter {
+    
+  }
+  header {
+    padding: 10px 20px;
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
-}
-
-.filter button {
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    background: white;
-    cursor: pointer;
+    align-items: center;
+    width: 100%;  
+    font-size: 16px;
+    border-bottom: 1px solid black
+  }
+  .search-bar {
+    width: 100%;
+    max-width: 450px; 
+  }
+  .search-bar input {
+    padding: 5px;
     border-radius: 4px;
+    border: none;
+    width: 433px; 
+    height: 58px; 
+    background-color:rgb(245,245,245)
+  }
+  .navbar {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    gap: 40px; 
+    max-width: 1300px;
+    width: 100%;
+    padding: 10px 20px;
+    margin: 0 auto; 
+  }
+  
+  
+  
+  .nav-left ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-left ul li {
+    display: inline;
+  }
+  
+  .nav-left ul li a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .nav-right {
+    display: flex;
+    gap: 24px;
+  }
+  
+  .nav-right img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+  
+.filter {
+  display: flex;
+  justify-content: flex-start; 
+  gap: 30px;
+  width: 100%;
+  max-width: 1300px;
+  margin-bottom: 20px;
+  padding: 20px 80px; 
+  font-size:18px ;
 }
-
+.filter button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px;
+  color: #333;
+}
 .filter button.active {
-    background: black;
-    color: white;
+  font-weight: bold;
+  border-bottom: 2px solid black; 
 }
 
-/* Danh sách khóa học */
-.courses {
+  .courses {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    padding: 20px;
-}
-
-.course {
+    justify-items: center;
+    max-width: 1300px;
+  }
+  .course {
     background: white;
-    padding: 15px;
+    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.course h3 {
-    margin: 0 0 10px;
-}
-
-.course ul {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 370px;
+    height: 362px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .course h3 {
+    color: #333;
+    display: flex;
+    justify-self:start ;
+  }
+  .course ul {
     list-style: none;
     padding: 0;
-}
-
-.course ul li {
+    text-align: left;
+  }
+  .course ul li {
     display: flex;
     align-items: center;
-    gap: 8px;
-}
-
-.course a {
-    display: block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: blue;
-    font-weight: bold;
-}
-
-/* Footer */
-footer {
-    background: black;
+    gap: 10px;
+    padding: 5px 0;
+  }
+  .course ul li img {
+    width: 16px;
+    height: 16px;
+  }
+  footer {
+    background: #333;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 10px;
     margin-top: 20px;
-}
-
-.footer-content ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-content ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-.footer-content ul li a {
-    color: white;
-    text-decoration: none;
-}
+    width: 100%;
+  }

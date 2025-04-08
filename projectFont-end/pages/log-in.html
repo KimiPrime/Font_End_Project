@@ -6,12 +6,13 @@
     <title>Đăng nhập</title>
     <link rel="stylesheet" href="../css/log-in.css" />
     <link rel="stylesheet" href="../css/rest.css" />
+    <link rel="stylesheet" href="../css/basc.css" />
   </head>
   <body>
     <div class="login-container">
       <div id="title">
         <h1>Đăng nhập</h1>
-        <p>Đăng nhập tài khoản để sử dụng dịch vụ.</p>
+        <p id="description">Đăng nhập tài khoản để sử dụng hệ thống quản lý.</p>
       </div>
       <form action="#" method="POST">
         <label for="email">Email</label>
@@ -20,14 +21,21 @@
         <label for="password">Mật khẩu</label>
         <input type="password" id="password" name="password" required />
 
-        <div class="options">
+        <div class="options" id="options">
           <label><input type="checkbox" name="remember" /> Nhớ tài khoản</label>
           <a href="#">Quên mật khẩu?</a>
         </div>
 
+        <p id="terms">Bạn đồng ý với chính sách và điều khoản.</p>
+
         <button type="submit">Đăng nhập</button>
       </form>
-      <p>Bạn chưa có tài khoản? <a href="../pages/register.html">Đăng ký</a></p>
+
+      <p id="register-link">
+        Bạn chưa có tài khoản? <a href="../pages/register.html">Đăng ký</a>
+      </p>
     </div>
+
+    <script src="../js/log-in.js"></script>
   </body>
 </html>

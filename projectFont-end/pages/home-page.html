@@ -6,87 +6,153 @@
     <title>Danh sách môn học</title>
     <link rel="stylesheet" href="../css/home-page.css" />
     <link rel="stylesheet" href="../css/rest.css" />
+    <link rel="stylesheet" href="../css/basc.css" />
   </head>
   <body>
-    <!-- Header -->
     <header>
       <div class="search-bar">
         <input type="text" placeholder="Tìm kiếm..." />
       </div>
-      <nav>
-        <ul>
-          <li><a href="#">Trang chủ</a></li>
-          <li><a href="#">Hỏi đáp</a></li>
-          <li><a href="#">Bộ sưu tập</a></li>
-        </ul>
+      <nav class="navbar">
+        <div class="nav-left">
+          <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Môn học</a></li>
+            <li><a href="#">Bài học</a></li>
+          </ul>
+        </div>
+        <div class="nav-right">
+          <img src="../assist/heart.png" alt="Heart" />
+          <img src="../assist/user.png" alt="User" />
+        </div>
       </nav>
     </header>
 
-    <!-- Bộ lọc -->
     <div class="filter">
       <button class="active">Tất cả môn học</button>
       <button>Đã hoàn thành</button>
       <button>Chưa hoàn thành</button>
     </div>
-
-    <!-- Danh sách môn học -->
     <main class="courses">
       <div class="course">
         <h3>HTML cơ bản</h3>
         <ul>
-          <li><input type="checkbox" checked /> Giới thiệu về HTML</li>
-          <li><input type="checkbox" /> Thẻ inline và block</li>
-          <li><input type="checkbox" /> Danh sách và bảng</li>
-          <li><input type="checkbox" /> Thẻ semantic</li>
+          <li>
+            <img src="../assist/circle-ok.png" /> Session 01: Tổng quan về HTML
+          </li>
+          <li>
+            <img src="../assist/circle-ok.png" /> Session 02: Thẻ Inline và
+            Block
+          </li>
+          <li>
+            <img src="../assist/circle-ok.png" /> Session 03: Thẻ hình ảnh
+          </li>
+          <li>
+            <img src="../assist/circle-ok.png" /> Session 04: Thẻ chuyển trang
+          </li>
+          <li>
+            <img src="../assist/circle-ok.png" /> Session 05: Thẻ Semantic
+          </li>
         </ul>
         <a href="#">Xem chi tiết</a>
       </div>
-
       <div class="course">
         <h3>CSS cơ bản</h3>
         <ul>
-          <li><input type="checkbox" checked /> Styling cơ bản</li>
-          <li><input type="checkbox" /> Sử dụng Flexbox</li>
-          <li><input type="checkbox" /> Animation</li>
+          <li>
+            <img src="../assist/circle-ok.png" /> Session 01: Tổng quan về CSS
+          </li>
+          <li>
+            <img src="../assist/circle-ok.png" /> Session 02: Nhúng CSS vào
+            trang Web
+          </li>
+          <li><img src="../assist/circle-ok.png" /> Session 03: Position</li>
+          <li><img src="../assist/circle-ok.png" /> Session 04: Flexbox</li>
+          <li><img src="../assist/circle-ok.png" /> Session 05: Animation</li>
         </ul>
         <a href="#">Xem chi tiết</a>
       </div>
-
       <div class="course">
         <h3>JavaScript cơ bản</h3>
         <ul>
-          <li><input type="checkbox" checked /> Tổng quan về JavaScript</li>
-          <li><input type="checkbox" /> Cấu trúc điều kiện</li>
-          <li><input type="checkbox" /> Vòng lặp</li>
+          <li>
+            <img src="../assist/circle-ok.png" /> Session 01: Tổng quan ngôn ngữ
+            JavaScript
+          </li>
+          <li>
+            <img src="../assist/circle-ok.png" /> Session 02: Khai báo biến
+          </li>
+          <li>
+            <img src="../assist/circle-ok.png" /> Session 03: Câu lệnh điều kiện
+          </li>
+          <li><img src="../assist/circle-ok.png" /> Session 04: Vòng lặp</li>
+          <li><img src="../assist/circle-ok.png" /> Session 05: Mảng</li>
         </ul>
         <a href="#">Xem chi tiết</a>
       </div>
-
       <div class="course">
         <h3>Lập trình với React.js</h3>
         <ul>
-          <li><input type="checkbox" /> JSX và Components</li>
-          <li><input type="checkbox" /> State và Props</li>
-          <li><input type="checkbox" /> React Router</li>
+          <li>
+            <img src="../assist/circle-ok.png" />Session 01: Tổng quan về
+            React.js
+          </li>
+          <li>
+            <img src="../assist/circle-ok.png" />Session 02: Props, State, Event
+          </li>
+          <li><img src="../assist/circle-ok.png" />Session 03: React hook</li>
+          <li><img src="../assist/circle-ok.png" />Session 04: UI Framework</li>
+          <li><img src="../assist/circle-ok.png" />Session 05: React Router</li>
         </ul>
         <a href="#">Xem chi tiết</a>
       </div>
-
       <div class="course">
-        <h3>Lập trình C</h3>
+        <h3>Lập trình với Java</h3>
+        <ul>
+          <li>
+            <img src="../assist/circle-ok.png" />Session 01: Tổng quan về ngôn
+            ngữ Java
+          </li>
+          <li>
+            <img src="../assist/circle-ok.png" />Session 02: Khai báo biến
+          </li>
+          <li>
+            <img src="../assist/circle-ok.png" />Session 03: Câu lệnh điều kiện
+          </li>
+          <li><img src="../assist/circle-ok.png" />Session 04: Vòng lặp</li>
+          <li><img src="../assist/circle-ok.png" />Session 05: Mảng</li>
+        </ul>
+        <a href="#">Xem chi tiết</a>
+      </div>
+      <div class="course">
+        <h3>HTML cơ bản</h3>
         <p>Chưa có bài học nào</p>
       </div>
     </main>
-
-    <!-- Footer -->
     <footer>
       <div class="footer-content">
-        <p>Chúng tôi cung cấp nền tảng học lập trình miễn phí.</p>
-        <ul>
-          <li><a href="#">Điều khoản</a></li>
-          <li><a href="#">Liên hệ</a></li>
-          <li><a href="#">Hỗ trợ</a></li>
-        </ul>
+        <p>
+          Chúng tôi cung cấp giải pháp học tập, giúp học sinh và viên học tập
+          tốt hơn và hiệu quả hơn.
+        </p>
+        <div>
+          <p>Danh mục</p>
+          <p>Môn học</p>
+          <p>Bài học</p>
+          <p>Ghi chú</p>
+        </div>
+        <div>
+          <p>Hỗ trợ khách hàng</p>
+          <p>Tìm kiếm dịch vụ</p>
+          <p>Điều khoản sử dụng</p>
+          <p>Chính sách và điều khoản</p>
+        </div>
+        <div>
+          <img src="../assist/Twitter.png" alt="" />
+          <img src="../assist/Facebook.png" alt="" />
+          <img src="../assist/Tiktok.png" alt="" />
+          <img src="../assist/Instagram.png" alt="" />
+        </div>
       </div>
     </footer>
   </body>
