@@ -23,3 +23,29 @@ function updateResponsiveContent() {
 
 window.addEventListener("load", updateResponsiveContent);
 window.addEventListener("resize", updateResponsiveContent);
+
+document.querySelector("form").addEventListener("submit", function (e) {
+  e.preventDefault(); // Ngăn form gửi đi mặc định
+
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  // Tìm thông tin người dùng trong localStorage
+  const userData = localStorage.getItem(`user_${email}`);
+
+  if (!userData) {
+    alert("Tài khoản không tồn tại!");
+    return;
+  }
+
+  const user = JSON.parse(userData);
+
+  if (user.matKhau !== password) {
+    alert("Mật khẩu không chính xác!");
+    return;
+  }
+
+  alert("Đăng nhập thành công!");
+  // Chuyển hướng hoặc thực hiện hành động sau khi đăng nhập
+  window.location.href = "../pages/home-page.html";
+});

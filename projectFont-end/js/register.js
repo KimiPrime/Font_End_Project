@@ -67,5 +67,5 @@ btnDangKy.addEventListener("click", function () {
   emailEl.value = "";
   matKhauEl.value = "";
   dongYEl.checked = false;
-  window.location.href = "../pages/log-in.html";
+  window.history.back = "../pages/log-in.html";
 });

@@ -6,7 +6,20 @@ body {
   height: 100vh;
   margin: 0;
 }
+input:invalid {
+  border: 2px solid red;
+}
 
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  display: none;
+}
+
+input.invalid + .error-message {
+  display: block;
+}
 .login-container {
   padding: 20px;
   text-align: center;

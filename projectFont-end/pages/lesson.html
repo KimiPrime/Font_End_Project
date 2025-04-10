@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý bài học</title>
+    <link rel="stylesheet" href="../css/lesson.css" />
+    <link rel="stylesheet" href="../css/rest.css" />
+    <link rel="stylesheet" href="../css/basc.css" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="study-tracker">
+        <img src="../assist/avater.png" alt="Logo" />
+        <div class="text">
+          <h2>Study Tracker</h2>
+          <p>Quản lý tiến độ học tập</p>
+        </div>
+      </div>
+      <ul>
+        <li><a href="#">Thống kê</a></li>
+        <li><a href="#">Quản lý môn học</a></li>
+        <li class="active"><a href="#">Quản lý bài học</a></li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Header Icons -->
+      <div class="header-icons">
+        <img src="../assist/menu.png" class="menu-icon" alt="Menu" />
+        <div class="right-icons">
+          <img src="../assist/Bell.png" alt="Thông báo" />
+          <img src="../assist/Question mark circle.png" alt="Trợ giúp" />
+          <img src="../assist/Cog settings.png" alt="Cài đặt" />
+          <img
+            src="../assist/Avatar w. photo.png"
+            class="avatar"
+            alt="Avatar"
+          />
+        </div>
+      </div>
+
+      <!-- Page Header -->
+      <div class="header">
+        <h2>Bài học</h2>
+        <div class="actions">
+          <select class="select" id="statusFilter">
+            <option value="all">Lọc theo trạng thái</option>
+            <option value="active">Đang hoạt động</option>
+            <option value="inactive">Ngừng hoạt động</option>
+          </select>
+          <button class="add-btn">Thêm mới bài học</button>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <table>
+        <thead>
+          <tr>
+            <th><input type="checkbox" /></th>
+            <th>Tên bài học &#8595;</th>
+            <th>Thời gian học</th>
+            <th>Trạng thái</th>
+            <th>Chức năng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox" checked /></td>
+            <td>Session 01 - Tổng quan về HTML</td>
+            <td>45</td>
+            <td>
+              <div class="status-wrapper completed">
+                <span class="dot"></span> Đã hoàn thành
+              </div>
+            </td>
+            <td>
+              <button class="edit">
+                <img src="../assist/edit-2.png" alt="Edit" />
+              </button>
+              <button class="delete">
+                <img src="../assist/trash-2.png" alt="Delete" />
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>Session 03 - Thẻ Inline và Block</td>
+            <td>60</td>
+            <td>
+              <div class="status-wrapper pending">
+                <span class="dot"></span> Chưa hoàn thành
+              </div>
+            </td>
+            <td>
+              <button class="edit">
+                <img src="../assist/edit-2.png" alt="Edit" />
+              </button>
+              <button class="delete">
+                <img src="../assist/trash-2.png" alt="Delete" />
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>Session 04 - Thẻ Inline và Block</td>
+            <td>60</td>
+            <td>
+              <div class="status-wrapper pending">
+                <span class="dot"></span> Chưa hoàn thành
+              </div>
+            </td>
+            <td>
+              <button class="edit">
+                <img src="../assist/edit-2.png" alt="Edit" />
+              </button>
+              <button class="delete">
+                <img src="../assist/trash-2.png" alt="Delete" />
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>Session 05 - Thẻ Inline và Block</td>
+            <td>60</td>
+            <td>
+              <div class="status-wrapper pending">
+                <span class="dot"></span> Chưa hoàn thành
+              </div>
+            </td>
+            <td>
+              <button class="edit">
+                <img src="../assist/edit-2.png" alt="Edit" />
+              </button>
+              <button class="delete">
+                <img src="../assist/trash-2.png" alt="Delete" />
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>Session 02 - Thẻ Inline và Block</td>
+            <td>60</td>
+            <td>
+              <div class="status-wrapper pending">
+                <span class="dot"></span> Chưa hoàn thành
+              </div>
+            </td>
+            <td>
+              <button class="edit">
+                <img src="../assist/edit-2.png" alt="Edit" />
+              </button>
+              <button class="delete">
+                <img src="../assist/trash-2.png" alt="Delete" />
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button>«</button>
+        <button>1</button>
+        <button class="switch">2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>»</button>
+      </div>
+    </div>
+  </body>
+</html>
