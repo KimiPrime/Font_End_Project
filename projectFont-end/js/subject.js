@@ -231,3 +231,15 @@ window.luuMon = function () {
   document.querySelector("#formMonHoc form").reset();
   filterRows(); // cập nhật lại danh sách
 };
+//xoa
+document.querySelector("table").addEventListener("click", function (e) {
+  if (e.target.closest(".delete")) {
+    const row = e.target.closest("tr");
+    const tenMon = row.querySelector("td").innerText.trim();
+
+    // Điều hướng sang popup-delete.html và truyền tên môn học qua query string
+    window.location.href = `popup-delete.html?tenMon=${encodeURIComponent(
+      tenMon
+    )}`;
+  }
+});
