@@ -19,9 +19,13 @@
         </div>
       </div>
       <ul>
-        <li><a href="#">Thống kê</a></li>
-        <li><a href="#">Quản lý môn học</a></li>
-        <li class="active"><a href="#">Quản lý bài học</a></li>
+        <li><img src="../assist/Trending up.png" /><a href="#">Thống kê</a></li>
+        <li class="active">
+          <img src="../assist/Notebook.png" /><a href="#">Quản lý môn học</a>
+        </li>
+        <li>
+          <img src="../assist/paper.png" /><a href="#">Quản lý bài học</a>
+        </li>
       </ul>
     </div>
 
@@ -51,7 +55,7 @@
             <option value="active">Đang hoạt động</option>
             <option value="inactive">Ngừng hoạt động</option>
           </select>
-          <button class="add-btn">Thêm mới bài học</button>
+          <button class="add-btn" onclick="hienForm()">Thêm mới môn học</button>
         </div>
       </div>
 
@@ -67,7 +71,15 @@
       <table>
         <thead>
           <tr>
-            <th>Tên bài học &#8595;</th>
+            <th>
+              Tên bài học
+              <img
+                src="../assist/arrow-down.png"
+                alt="Sort"
+                id="sortIcon"
+                style="cursor: pointer"
+              />
+            </th>
             <th>Trạng thái</th>
             <th>Chức năng</th>
           </tr>
@@ -209,6 +221,74 @@
               </button>
             </td>
           </tr>
+          <tr>
+            <td>Tin học cơ sở 2</td>
+            <td>
+              <div class="status-box completed">
+                <img src="../assist/Dot.png" />
+                <span>Hoạt động</span>
+              </div>
+            </td>
+            <td>
+              <button class="edit">
+                <img src="../assist/edit-2.png" alt="Edit" />
+              </button>
+              <button class="delete">
+                <img src="../assist/trash-2.png" alt="Delete" />
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>Tin học cơ sở 1</td>
+            <td>
+              <div class="status-box pending">
+                <img src="../assist/Dotred.png" />
+                <span>Ngừng hoạt động</span>
+              </div>
+            </td>
+            <td>
+              <button class="edit">
+                <img src="../assist/edit-2.png" alt="Edit" />
+              </button>
+              <button class="delete">
+                <img src="../assist/trash-2.png" alt="Delete" />
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>Tiếng Anh TOEIC</td>
+            <td>
+              <div class="status-box completed">
+                <img src="../assist/Dot.png" />
+                <span> Hoạt động</span>
+              </div>
+            </td>
+            <td>
+              <button class="edit">
+                <img src="../assist/edit-2.png" alt="Edit" />
+              </button>
+              <button class="delete">
+                <img src="../assist/trash-2.png" alt="Delete" />
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>Tiếng Anh chuyên ngành</td>
+            <td>
+              <div class="status-box pending">
+                <img src="../assist/Dotred.png" />
+                <span>Ngừng hoạt động</span>
+              </div>
+            </td>
+            <td>
+              <button class="edit">
+                <img src="../assist/edit-2.png" alt="Edit" />
+              </button>
+              <button class="delete">
+                <img src="../assist/trash-2.png" alt="Delete" />
+              </button>
+            </td>
+          </tr>
         </tbody>
       </table>
 
@@ -223,6 +303,56 @@
         <button>»</button>
       </div>
     </div>
+    <!-- Modal thêm mới môn học -->
+    <div id="formMonHoc" class="modal" style="display: none">
+      <div class="modal-content">
+        <span id="closeModal" class="close-button">&times;</span>
+        <h2>Thêm môn học mới</h2>
+
+        <form onsubmit="event.preventDefault(); luuMon();">
+          <label>Tên môn học:</label>
+          <input
+            type="text"
+            id="tenMon"
+            name="title"
+            placeholder="Nhập tên môn học..."
+            required
+          />
+
+          <!-- Trạng thái -->
+          <label>Trạng thái:</label>
+          <div class="status-options">
+            <label>
+              <input
+                type="radio"
+                id="activeStatus"
+                name="status"
+                value="active"
+              />
+              Đang hoạt động
+            </label>
+            <label>
+              <input
+                type="radio"
+                id="inactiveStatus"
+                name="status"
+                value="inactive"
+              />
+              Ngừng hoạt động
+            </label>
+          </div>
+
+          <!-- Nhóm nút -->
+          <div class="button-group">
+            <button type="button" class="cancel-btn" onclick="anForm()">
+              Hủy
+            </button>
+            <button type="submit" class="submit-btn">Thêm</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <script src="../js/subject.js"></script>
   </body>
 </html>

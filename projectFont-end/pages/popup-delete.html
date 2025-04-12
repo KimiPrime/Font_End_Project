@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/basc.css" />
   </head>
   <body>
-    <div class="modal">
+    <div class="modal" id="deleteModal">
       <div class="modal-header">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -32,9 +32,10 @@
         không?
       </p>
       <div class="modal-footer">
-        <button class="btn btn-cancel">Hủy</button>
-        <button class="btn btn-delete">Xóa</button>
+        <button class="btn btn-cancel" id="cancelBtn">Hủy</button>
+        <button class="btn btn-delete" id="deleteBtn">Xóa</button>
       </div>
     </div>
+    <script src="../js/delete.js"></script>
   </body>
 </html>

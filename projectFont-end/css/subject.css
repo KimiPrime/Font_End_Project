@@ -6,7 +6,7 @@ body {
 
 .sidebar {
   width: 220px;
-  background-color: #fff;
+  background-color: #F6F8F9;
   padding: 20px;
   height: 100vh;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -42,7 +42,14 @@ body {
 }
 
 .sidebar ul li {
+  display: flex;
+  align-items: center; 
   margin: 10px 0;
+}
+
+.sidebar ul li img {
+  width: 20px;
+  height: 20px; 
 }
 
 .sidebar ul li a {
@@ -50,7 +57,7 @@ body {
   color: #333;
   padding: 10px;
   border-radius: 5px;
-  display: block;
+  display: inline-block; 
   width: 100%;
 }
 
@@ -199,7 +206,9 @@ td {
   border: none;
   cursor: pointer;
 }
-
+td button {
+  margin-right: 15px; 
+}
 .edit:hover {
   color: #007bff;
 }
@@ -256,4 +265,96 @@ td {
     background-color: currentColor;
     border-radius: 50%;
   }
-  
+  /* Ẩn modal mặc định */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* overlay */
+}
+
+/* Nội dung của modal */
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Nút đóng */
+.close-btn {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input và textarea full chiều ngang */
+.modal-content input,
+.modal-content textarea {
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Nhóm nút Thêm + Hủy */
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px; /* khoảng cách giữa hai nút */
+}
+
+/* Nút Thêm và Hủy có cùng kích thước */
+.modal-content button {
+  padding: 10px 20px;
+  min-width: 100px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.status-options {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.status-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.status-options input[type="radio"] {
+  accent-color: #0e73f6;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* Nút Thêm */
+button.submit-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Nút Hủy */
+button.cancel-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+
