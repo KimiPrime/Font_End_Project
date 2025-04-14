@@ -189,6 +189,33 @@ document.addEventListener("DOMContentLoaded", function () {
       paginate();
     }
   });
+  // ====== SẮP XẾP THEO TÊN MÔN HỌC ======
+  let sortDirection = "asc"; // Mặc định là A-Z
+
+  const sortIcon = document.getElementById("sortIcon");
+  if (sortIcon) {
+    sortIcon.style.cursor = "pointer";
+
+    sortIcon.addEventListener("click", function () {
+      sortDirection = sortDirection === "asc" ? "desc" : "asc";
+
+      // Đổi icon theo hướng sắp xếp
+      sortIcon.style.transform =
+        sortDirection === "asc" ? "rotate(0deg)" : "rotate(180deg)";
+
+      filteredRows.sort((a, b) => {
+        const nameA = a.querySelector("td").innerText.toLowerCase();
+        const nameB = b.querySelector("td").innerText.toLowerCase();
+
+        return sortDirection === "asc"
+          ? nameA.localeCompare(nameB)
+          : nameB.localeCompare(nameA);
+      });
+
+      currentPage = 1;
+      paginate();
+    });
+  }
 
   // Lần đầu tải
   filterRows();
