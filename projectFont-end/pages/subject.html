@@ -353,6 +353,50 @@
       </div>
     </div>
 
+    <div id="formMonHocEdit" class="modal" style="display: none">
+      <div class="modal-content">
+        <span id="closeModalEdit" class="close-button">&times;</span>
+        <h2>Sửa môn học</h2>
+        <form onsubmit="event.preventDefault(); luuMonEdit();">
+          <label>Tên môn học:</label>
+          <input
+            type="text"
+            id="tenMonEdit"
+            name="title"
+            placeholder="Cập nhật môn học..."
+            required
+          />
+          <label>Trạng thái:</label>
+          <div class="status-options">
+            <label>
+              <input
+                type="radio"
+                id="activeStatusEdit"
+                name="status"
+                value="active"
+              />
+              Đang hoạt động
+            </label>
+            <label>
+              <input
+                type="radio"
+                id="inactiveStatusEdit"
+                name="status"
+                value="inactive"
+              />
+              Ngừng hoạt động
+            </label>
+          </div>
+          <div class="button-group">
+            <button type="button" class="cancel-btn" onclick="anFormEdit()">
+              Hủy
+            </button>
+            <button type="save" class="submit-btn">Lưu</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <script src="../js/subject.js"></script>
   </body>
 </html>

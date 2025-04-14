@@ -48,13 +48,21 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("formMonHoc").style.display = "block";
   };
 
+  window.hienFormEdit = function () {
+    document.getElementById("formMonHocEdit").style.display = "block";
+  };
+
   window.anForm = function () {
     document.getElementById("formMonHoc").style.display = "none";
   };
 
+  window.anFormEdit = function () {
+    document.getElementById("formMonHocEdit").style.display = "none";
+  };
+
   document.getElementById("closeModal").addEventListener("click", anForm);
 
-  // Lưu bài học mới
+  // Sửa hàm luuMon để hỗ trợ cập nhật
   window.luuMon = function () {
     const tenMon = document.getElementById("tenMon").value.trim();
     const statusRadio = document.querySelector('input[name="status"]:checked');
@@ -76,32 +84,117 @@ document.addEventListener("DOMContentLoaded", function () {
     const statusImg =
       statusValue === "active" ? "../assist/Dot.png" : "../assist/Dotred.png";
 
-    const tableBody = document.querySelector("table tbody");
+    if (rowDangChinhSua) {
+      // Cập nhật tên môn học
+      rowDangChinhSua.children[0].innerText = tenMon;
 
-    const newRow = document.createElement("tr");
-    newRow.innerHTML = `
-      <td>${tenMon}</td>
-      <td>
-        <div class="status-box ${statusClass}">
-          <img src="${statusImg}" />
-          <span>${statusText}</span>
-        </div>
-      </td>
-      <td>
-        <button class="edit">
-          <img src="../assist/edit-2.png" alt="Edit" />
-        </button>
-        <button class="delete">
-          <img src="../assist/trash-2.png" alt="Delete" />
-        </button>
-      </td>
-    `;
+      // Cập nhật trạng thái
+      const statusBox = rowDangChinhSua.querySelector(".status-box");
+      statusBox.className = `status-box ${statusClass}`;
+      statusBox.innerHTML = `<img src="${statusImg}" /><span>${statusText}</span>`;
 
-    tableBody.appendChild(newRow);
+      // Reset
+      rowDangChinhSua = null;
+    } else {
+      // Thêm mới
+      const tableBody = document.querySelector("table tbody");
+      const newRow = document.createElement("tr");
+      const row = e.target.closest("tr");
+      newRow.innerHTML = `
+        <td>${tenMon}</td>
+        <td>
+          <div class="status-box ${statusClass}">
+            <img src="${statusImg}" />
+            <span>${statusText}</span>
+          </div>
+        </td>
+        <td>
+          <button class="edit">
+            <img src="../assist/edit-2.png" alt="Edit" />
+          </button>
+          <button class="delete">
+            <img src="../assist/trash-2.png" alt="Delete" />
+          </button>
+        </td>
+      `;
+      tableBody.appendChild(newRow);
+      row.remove();
+    }
+
     anForm();
     document.querySelector("#formMonHoc form").reset();
+    filterRows(); // cập nhật lại danh sách
+  };
 
-    filterRows(); // cập nhật danh sách sau khi thêm
+  // Lưu bài học mới
+  window.luuMon = function () {
+    const tenMon = document.getElementById("tenMon").value.trim();
+    const statusRadio = document.querySelector('input[name="status"]:checked');
+    if (!tenMon || !statusRadio) {
+      alert("Vui lòng nhập tên và chọn trạng thái.");
+      return;
+    }
+
+    const statusValue = statusRadio.value;
+    const statusText =
+      statusValue === "active" ? "Đang hoạt động" : "Ngừng hoạt động";
+    const statusClass = statusValue === "active" ? "completed" : "pending";
+    const statusImg =
+      statusValue === "active" ? "../assist/Dot.png" : "../assist/Dotred.png";
+
+    const tableBody = document.querySelector("table tbody");
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
+    <td>${tenMon}</td>
+    <td>
+      <div class="status-box ${statusClass}">
+        <img src="${statusImg}" />
+        <span>${statusText}</span>
+      </div>
+    </td>
+    <td>
+      <button class="edit">
+        <img src="../assist/edit-2.png" alt="Edit" />
+      </button>
+      <button class="delete">
+        <img src="../assist/trash-2.png" alt="Delete" />
+      </button>
+    </td>
+  `;
+    tableBody.appendChild(newRow);
+
+    anForm();
+    document.querySelector("#formMonHoc form").reset();
+    filterRows(); // Update filter and pagination
+  };
+
+  // Function for editing an existing lesson
+  window.updateMon = function () {
+    const tenMon = document.getElementById("tenMon").value.trim();
+    const statusRadio = document.querySelector('input[name="status"]:checked');
+    if (!tenMon || !statusRadio) {
+      alert("Vui lòng nhập tên và chọn trạng thái.");
+      return;
+    }
+
+    const statusValue = statusRadio.value;
+    const statusText =
+      statusValue === "active" ? "Đang hoạt động" : "Ngừng hoạt động";
+    const statusClass = statusValue === "active" ? "completed" : "pending";
+    const statusImg =
+      statusValue === "active" ? "../assist/Dot.png" : "../assist/Dotred.png";
+
+    // If editing
+    if (rowDangChinhSua) {
+      rowDangChinhSua.children[0].innerText = tenMon;
+      const statusBox = rowDangChinhSua.querySelector(".status-box");
+      statusBox.className = `status-box ${statusClass}`;
+      statusBox.innerHTML = `<img src="${statusImg}" /><span>${statusText}</span>`;
+
+      rowDangChinhSua = null;
+    }
+    anForm();
+    filterRows();
   };
 
   function paginate() {
@@ -148,41 +241,47 @@ document.addEventListener("DOMContentLoaded", function () {
   // Lần đầu tải
   filterRows();
 });
-let rowDangChinhSua = null; // lưu trữ dòng đang chỉnh
+
+let rowDangChinhSua = null;
 
 document.querySelector("table").addEventListener("click", function (e) {
-  if (e.target.closest(".edit")) {
-    const row = e.target.closest("tr");
-    const tenMon = row.querySelector("td").innerText.trim();
+  const editBtn = e.target.closest(".edit");
+  if (editBtn) {
+    const row = editBtn.closest("tr");
+    const tenMon = row.children[0].innerText.trim();
     const statusText = row.querySelector(".status-box span").innerText.trim();
 
-    // Đổ dữ liệu vào form
-    document.getElementById("tenMon").value = tenMon;
+    // Use the EDIT form fields instead of the ADD form
+    document.getElementById("tenMonEdit").value = tenMon;
     const statusValue = statusText === "Đang hoạt động" ? "active" : "inactive";
     document.querySelector(
-      `input[name="status"][value="${statusValue}"]`
+      `#formMonHocEdit input[name="status"][value="${statusValue}"]`
     ).checked = true;
 
-    // Hiện form
-    hienForm();
-
-    // Gắn dòng đang chỉnh
     rowDangChinhSua = row;
+
+    hienFormEdit(); // Show the edit modal
   }
 });
 
-// Sửa hàm luuMon để hỗ trợ cập nhật
-window.luuMon = function () {
-  const tenMon = document.getElementById("tenMon").value.trim();
-  const statusRadio = document.querySelector('input[name="status"]:checked');
-
-  if (!tenMon) {
-    alert("Vui lòng nhập tên bài học.");
-    return;
+//xoa
+document.querySelector("table").addEventListener("click", function (e) {
+  if (e.target.closest(".delete")) {
+    const row = e.target.closest("tr");
+    if (confirm("Bạn có chắc chắn muốn xóa môn học này không?")) {
+      row.remove();
+    }
   }
+});
 
-  if (!statusRadio) {
-    alert("Vui lòng chọn trạng thái.");
+window.luuMonEdit = function () {
+  const tenMon = document.getElementById("tenMonEdit").value.trim();
+  const statusRadio = document.querySelector(
+    '#formMonHocEdit input[name="status"]:checked'
+  );
+
+  if (!tenMon || !statusRadio) {
+    alert("Vui lòng nhập tên và chọn trạng thái.");
     return;
   }
 
@@ -194,52 +293,14 @@ window.luuMon = function () {
     statusValue === "active" ? "../assist/Dot.png" : "../assist/Dotred.png";
 
   if (rowDangChinhSua) {
-    // Nếu đang chỉnh sửa, cập nhật lại dòng
-    rowDangChinhSua.querySelector("td").innerText = tenMon;
+    // Update the table row
+    rowDangChinhSua.children[0].innerText = tenMon;
     const statusBox = rowDangChinhSua.querySelector(".status-box");
     statusBox.className = `status-box ${statusClass}`;
     statusBox.innerHTML = `<img src="${statusImg}" /><span>${statusText}</span>`;
 
-    rowDangChinhSua = null; // reset lại
-  } else {
-    // Nếu không, thêm mới
-    const tableBody = document.querySelector("table tbody");
-
-    const newRow = document.createElement("tr");
-    newRow.innerHTML = `
-      <td>${tenMon}</td>
-      <td>
-        <div class="status-box ${statusClass}">
-          <img src="${statusImg}" />
-          <span>${statusText}</span>
-        </div>
-      </td>
-      <td>
-        <button class="edit">
-          <img src="../assist/edit-2.png" alt="Edit" />
-        </button>
-        <button class="delete">
-          <img src="../assist/trash-2.png" alt="Delete" />
-        </button>
-      </td>
-    `;
-
-    tableBody.appendChild(newRow);
+    rowDangChinhSua = null;
+    anFormEdit();
+    filterRows(); // Refresh filtered view
   }
-
-  anForm();
-  document.querySelector("#formMonHoc form").reset();
-  filterRows(); // cập nhật lại danh sách
 };
-//xoa
-document.querySelector("table").addEventListener("click", function (e) {
-  if (e.target.closest(".delete")) {
-    const row = e.target.closest("tr");
-    const tenMon = row.querySelector("td").innerText.trim();
-
-    // Điều hướng sang popup-delete.html và truyền tên môn học qua query string
-    window.location.href = `popup-delete.html?tenMon=${encodeURIComponent(
-      tenMon
-    )}`;
-  }
-});
