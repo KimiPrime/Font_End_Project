@@ -62,76 +62,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById("closeModal").addEventListener("click", anForm);
 
-  // Sửa hàm luuMon để hỗ trợ cập nhật
+  // Lưu bài học mới
   window.luuMon = function () {
     const tenMon = document.getElementById("tenMon").value.trim();
     const statusRadio = document.querySelector('input[name="status"]:checked');
 
     if (!tenMon) {
-      alert("Vui lòng nhập tên bài học.");
+      Swal.fire({
+        icon: "warning",
+        title: "Thiếu thông tin",
+        text: "Vui lòng nhập tên bài học.",
+      });
       return;
     }
 
     if (!statusRadio) {
-      alert("Vui lòng chọn trạng thái.");
-      return;
-    }
-
-    const statusValue = statusRadio.value;
-    const statusText =
-      statusValue === "active" ? "Đang hoạt động" : "Ngừng hoạt động";
-    const statusClass = statusValue === "active" ? "completed" : "pending";
-    const statusImg =
-      statusValue === "active" ? "../assist/Dot.png" : "../assist/Dotred.png";
-
-    if (rowDangChinhSua) {
-      // Cập nhật tên môn học
-      rowDangChinhSua.children[0].innerText = tenMon;
-
-      // Cập nhật trạng thái
-      const statusBox = rowDangChinhSua.querySelector(".status-box");
-      statusBox.className = `status-box ${statusClass}`;
-      statusBox.innerHTML = `<img src="${statusImg}" /><span>${statusText}</span>`;
-
-      // Reset
-      rowDangChinhSua = null;
-    } else {
-      // Thêm mới
-      const tableBody = document.querySelector("table tbody");
-      const newRow = document.createElement("tr");
-      const row = e.target.closest("tr");
-      newRow.innerHTML = `
-        <td>${tenMon}</td>
-        <td>
-          <div class="status-box ${statusClass}">
-            <img src="${statusImg}" />
-            <span>${statusText}</span>
-          </div>
-        </td>
-        <td>
-          <button class="edit">
-            <img src="../assist/edit-2.png" alt="Edit" />
-          </button>
-          <button class="delete">
-            <img src="../assist/trash-2.png" alt="Delete" />
-          </button>
-        </td>
-      `;
-      tableBody.appendChild(newRow);
-      row.remove();
-    }
-
-    anForm();
-    document.querySelector("#formMonHoc form").reset();
-    filterRows(); // cập nhật lại danh sách
-  };
-
-  // Lưu bài học mới
-  window.luuMon = function () {
-    const tenMon = document.getElementById("tenMon").value.trim();
-    const statusRadio = document.querySelector('input[name="status"]:checked');
-    if (!tenMon || !statusRadio) {
-      alert("Vui lòng nhập tên và chọn trạng thái.");
+      Swal.fire({
+        icon: "warning",
+        title: "Thiếu thông tin",
+        text: "Vui lòng chọn trạng thái.",
+      });
       return;
     }
 
@@ -145,35 +95,39 @@ document.addEventListener("DOMContentLoaded", function () {
     const tableBody = document.querySelector("table tbody");
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
-    <td>${tenMon}</td>
-    <td>
-      <div class="status-box ${statusClass}">
-        <img src="${statusImg}" />
-        <span>${statusText}</span>
-      </div>
-    </td>
-    <td>
-      <button class="edit">
-        <img src="../assist/edit-2.png" alt="Edit" />
-      </button>
-      <button class="delete">
-        <img src="../assist/trash-2.png" alt="Delete" />
-      </button>
-    </td>
-  `;
+      <td>${tenMon}</td>
+      <td>
+        <div class="status-box ${statusClass}">
+          <img src="${statusImg}" />
+          <span>${statusText}</span>
+        </div>
+      </td>
+      <td>
+        <button class="edit">
+          <img src="../assist/edit-2.png" alt="Edit" />
+        </button>
+        <button class="delete">
+          <img src="../assist/trash-2.png" alt="Delete" />
+        </button>
+      </td>
+    `;
     tableBody.appendChild(newRow);
 
     anForm();
     document.querySelector("#formMonHoc form").reset();
-    filterRows(); // Update filter and pagination
+    filterRows();
   };
 
-  // Function for editing an existing lesson
   window.updateMon = function () {
     const tenMon = document.getElementById("tenMon").value.trim();
     const statusRadio = document.querySelector('input[name="status"]:checked');
+
     if (!tenMon || !statusRadio) {
-      alert("Vui lòng nhập tên và chọn trạng thái.");
+      Swal.fire({
+        icon: "warning",
+        title: "Thiếu thông tin",
+        text: "Vui lòng nhập tên và chọn trạng thái.",
+      });
       return;
     }
 
@@ -184,13 +138,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const statusImg =
       statusValue === "active" ? "../assist/Dot.png" : "../assist/Dotred.png";
 
-    // If editing
     if (rowDangChinhSua) {
       rowDangChinhSua.children[0].innerText = tenMon;
       const statusBox = rowDangChinhSua.querySelector(".status-box");
       statusBox.className = `status-box ${statusClass}`;
       statusBox.innerHTML = `<img src="${statusImg}" /><span>${statusText}</span>`;
-
       rowDangChinhSua = null;
     }
     anForm();
@@ -215,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
 
-    getAllRows().forEach((row) => (row.style.display = "none")); // Ẩn tất cả
+    getAllRows().forEach((row) => (row.style.display = "none"));
 
     filteredRows.forEach((row, index) => {
       row.style.display = index >= start && index < end ? "" : "none";
@@ -251,7 +203,6 @@ document.querySelector("table").addEventListener("click", function (e) {
     const tenMon = row.children[0].innerText.trim();
     const statusText = row.querySelector(".status-box span").innerText.trim();
 
-    // Use the EDIT form fields instead of the ADD form
     document.getElementById("tenMonEdit").value = tenMon;
     const statusValue = statusText === "Đang hoạt động" ? "active" : "inactive";
     document.querySelector(
@@ -260,17 +211,35 @@ document.querySelector("table").addEventListener("click", function (e) {
 
     rowDangChinhSua = row;
 
-    hienFormEdit(); // Show the edit modal
+    hienFormEdit();
   }
 });
 
-//xoa
+// Xóa
 document.querySelector("table").addEventListener("click", function (e) {
   if (e.target.closest(".delete")) {
     const row = e.target.closest("tr");
-    if (confirm("Bạn có chắc chắn muốn xóa môn học này không?")) {
-      row.remove();
-    }
+    Swal.fire({
+      title: "Bạn có chắc chắn?",
+      text: "Môn học này sẽ bị xóa!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Xóa",
+      cancelButtonText: "Hủy",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        row.remove();
+        Swal.fire({
+          icon: "success",
+          title: "Đã xóa!",
+          text: "Môn học đã được xóa.",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      }
+    });
   }
 });
 
@@ -281,7 +250,11 @@ window.luuMonEdit = function () {
   );
 
   if (!tenMon || !statusRadio) {
-    alert("Vui lòng nhập tên và chọn trạng thái.");
+    Swal.fire({
+      icon: "warning",
+      title: "Thiếu thông tin",
+      text: "Vui lòng nhập tên và chọn trạng thái.",
+    });
     return;
   }
 
@@ -293,7 +266,6 @@ window.luuMonEdit = function () {
     statusValue === "active" ? "../assist/Dot.png" : "../assist/Dotred.png";
 
   if (rowDangChinhSua) {
-    // Update the table row
     rowDangChinhSua.children[0].innerText = tenMon;
     const statusBox = rowDangChinhSua.querySelector(".status-box");
     statusBox.className = `status-box ${statusClass}`;
@@ -301,6 +273,6 @@ window.luuMonEdit = function () {
 
     rowDangChinhSua = null;
     anFormEdit();
-    filterRows(); // Refresh filtered view
+    filterRows();
   }
 };
