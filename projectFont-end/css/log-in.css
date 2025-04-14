@@ -7,7 +7,7 @@ body {
   margin: 0;
 }
 input:invalid {
-  border: 2px solid red;
+  border: 2px solid rgb(17, 17, 17);
 }
 
 .error-message {

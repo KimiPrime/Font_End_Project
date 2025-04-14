@@ -44,7 +44,6 @@ dongYEl.addEventListener("change", kiemTraHopLe);
 
 // Sự kiện khi người dùng click nút "Đăng ký"
 btnDangKy.addEventListener("click", function () {
-  // Tạo đối tượng user từ dữ liệu trong form
   const user = {
     hoTenDem: hoTenDemEl.value.trim(),
     ten: tenEl.value.trim(),
@@ -52,20 +51,24 @@ btnDangKy.addEventListener("click", function () {
     matKhau: matKhauEl.value.trim(),
   };
 
-  // Lưu thông tin người dùng vào localStorage, với key là "user_email"
   localStorage.setItem(`user_${user.email}`, JSON.stringify(user));
 
-  // Chuyển hướng sang log in
-  window.location.href = "../pages/log-in.html";
+  // Hiển thị alert và đợi người dùng bấm OK rồi mới chuyển trang
+  Swal.fire({
+    title: "Good job!",
+    text: "Đăng ký thành công!",
+    icon: "success",
+    confirmButtonText: "OK",
+  }).then(() => {
+    // Sau khi người dùng bấm OK mới chuyển trang
+    window.location.href = "../pages/log-in.html";
+  });
 
-  // Thông báo thành công
-  alert("Đăng ký thành công!");
-
-  // Xóa dữ liệu trong form sau khi đăng ký thành công
+  // Xóa dữ liệu form (nếu muốn giữ lại thì để trong phần .then)
   hoTenDemEl.value = "";
   tenEl.value = "";
   emailEl.value = "";
   matKhauEl.value = "";
+  xacNhanMatKhauEl.value = "";
   dongYEl.checked = false;
-  window.history.back = "../pages/log-in.html";
 });

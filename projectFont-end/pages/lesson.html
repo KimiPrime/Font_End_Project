@@ -19,9 +19,13 @@
         </div>
       </div>
       <ul>
-        <li><a href="#">Thống kê</a></li>
-        <li><a href="#">Quản lý môn học</a></li>
-        <li class="active"><a href="#">Quản lý bài học</a></li>
+        <li><img src="../assist/Trending up.png" /><a href="#">Thống kê</a></li>
+        <li>
+          <img src="../assist/Notebook.png" /><a href="#">Quản lý môn học</a>
+        </li>
+        <li class="active">
+          <img src="../assist/paper.png" /><a href="#">Quản lý bài học</a>
+        </li>
       </ul>
     </div>
 
@@ -54,13 +58,19 @@
           <button class="add-btn">Thêm mới bài học</button>
         </div>
       </div>
-
+      <div class="search-container">
+        <input
+          type="text"
+          class="search-box"
+          placeholder="Tìm kiếm môn học theo tên..."
+        />
+      </div>
       <!-- Table -->
       <table>
         <thead>
           <tr>
             <th><input type="checkbox" /></th>
-            <th>Tên bài học &#8595;</th>
+            <th id="sortName">Tên bài học &#8595;</th>
             <th>Thời gian học</th>
             <th>Trạng thái</th>
             <th>Chức năng</th>
@@ -171,5 +181,6 @@
         <button>»</button>
       </div>
     </div>
+    <script src="../js/lesson.js"></script>
   </body>
 </html>

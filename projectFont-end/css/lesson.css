@@ -49,6 +49,10 @@ body {
     gap: 10px;
     margin: 10px 0;
   }
+  .sidebar ul li img {
+    width: 20px;
+    height: 20px; 
+  }
   
   .sidebar ul li a {
     text-decoration: none;
@@ -139,7 +143,18 @@ body {
     padding: 8px 10px;
     border-radius: 5px;
   }
+  .search-box {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
   
+  .search-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+  }
   table {
     width: 100%;
     border-collapse: collapse;

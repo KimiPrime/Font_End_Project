@@ -30,22 +30,35 @@ document.querySelector("form").addEventListener("submit", function (e) {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
 
-  // Tìm thông tin người dùng trong localStorage
   const userData = localStorage.getItem(`user_${email}`);
 
   if (!userData) {
-    alert("Tài khoản không tồn tại!");
+    Swal.fire({
+      icon: "error",
+      title: "Lỗi",
+      text: "Tài khoản không tồn tại!",
+    });
     return;
   }
 
   const user = JSON.parse(userData);
 
   if (user.matKhau !== password) {
-    alert("Mật khẩu không chính xác!");
+    Swal.fire({
+      icon: "error",
+      title: "Lỗi",
+      text: "Mật khẩu không chính xác!",
+    });
     return;
   }
 
-  alert("Đăng nhập thành công!");
-  // Chuyển hướng hoặc thực hiện hành động sau khi đăng nhập
-  window.location.href = "../pages/home-page.html";
+  // Đăng nhập thành công
+  Swal.fire({
+    icon: "success",
+    title: "Thành công",
+    text: "Đăng nhập thành công!",
+    confirmButtonText: "Tiếp tục",
+  }).then(() => {
+    window.location.href = "../pages/home-page.html";
+  });
 });
